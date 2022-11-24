@@ -1,6 +1,7 @@
 package org.generation.italy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,8 +32,14 @@ public class CalcolatriceTest {
 	
 	@Test
 	@DisplayName("Test divisione")
-	void divideTest() {
+	void divideTest() throws Exception {
 		float value = c.divide(4, 10);
 		assertEquals(0.4f, value);
+	}
+	
+	@Test
+	@DisplayName("Test eccezione divisione /0")
+	void exceptionDivideTest() {
+		assertThrows(Exception.class, () -> c.divide(4, 0));
 	}
 }
